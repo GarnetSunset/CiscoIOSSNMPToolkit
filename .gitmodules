@@ -1,0 +1,4 @@
+[submodule "cisco-snmp-rce"]
+	path = cisco-snmp-rce
+	url = https://github.com/GarnetSunset/cisco-snmp-rce
+	branch = master
