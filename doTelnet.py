@@ -19,10 +19,9 @@ class doTelnet:
 		# Connect to target
 		try:
 			self.telnet = Telnet(self.host, self.port)
-		except Exception as self.e:
-			print('[!]\tError opening telnet connection to {0}:{1}\n{2}'.format(self.host, self.port, self.e))
-		else:
 			print('[*]\tSuccessfully opened telnet connection to {0}:{1}'.format(self.host, self.port))
+		except Exception as self.e:
+			print('[!]\tError opening telnet connection to {0}:{1}\n{2}'.format(self.host, self.port, self.e))	
 
 	def login(self):
 		# Configure login variables for input
@@ -37,11 +36,10 @@ class doTelnet:
 		self.telnet.read_until('Password: ')
 		try:
 			self.telnet.write(self.password)
-		except Exception as self.e:
-			print('[!]\tError authenticating to {0}:{1}\n{2}'.format(self.host, self.port, self.e)
-		else:
 			print('[*]\tSuccessfully authenticated to {0}:{1}'.format(self.host, self.port))
 			self.login_status = 1
+		except Exception as self.e:
+			print('[!]\tError authenticating to {0}:{1}\n{2}'.format(self.host, self.port, self.e)
 
 		# Set terminal type
 		self.telnet.write(self.terminal_type)
