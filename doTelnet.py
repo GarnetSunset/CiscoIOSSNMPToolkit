@@ -39,7 +39,7 @@ class doTelnet:
 			print('[*]\tSuccessfully authenticated to {0}:{1}'.format(self.host, self.port))
 			self.login_status = 1
 		except Exception as self.e:
-			print('[!]\tError authenticating to {0}:{1}\n{2}'.format(self.host, self.port, self.e)
+			print('[!]\tError authenticating to {0}:{1}\n{2}'.format(self.host, self.port, self.e))
 
 		# Set terminal type
 		self.telnet.write(self.terminal_type)
