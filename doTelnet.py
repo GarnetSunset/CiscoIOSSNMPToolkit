@@ -15,6 +15,8 @@ class doTelnet:
 		# Set login status, 0 = login failed 1 = login success
 		login_status = 0
 
+		command = ""
+
 	def connect(self):
 		# Connect to target
 		try:
@@ -31,7 +33,7 @@ class doTelnet:
 
 		# Do login
 		# TODO Add functionality for user control of expected login prompt (some servers send 'Username: ', I'm sure theres other options)
-		self.telnet.read_until(b'login: ')
+		self.telnet.read_until(b'Username: ')
 		self.telnet.write(self.user)
 		self.telnet.read_until(b'Password: ')
 		try:
@@ -49,17 +51,18 @@ class doTelnet:
 
 	def cmd(self, command):
 		# Configure command variable for input
-		self.command = self.command.encode('ascii') + b'\n'
+		self.command = command.encode('ascii') + b'\n'
 
 		# Run commands
 		self.telnet.write(self.command)
 
 		# Collect output
 		# TODO Do something with this output
-		self.output = self.telnet.read_all.decode('ascii')
+		#self.output = self.telnet.read_all()
+		#self.output = self.output.decode('ascii')
 
 	def getOutput(self):
-		return self.output
+		return self.telnet.read_all()
 
 	def getStatus(self):
 		return self.login_status
