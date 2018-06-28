@@ -6,3 +6,6 @@
 	path = spectre-chrome
 	url = https://github.com/ascendr/spectre-chrome
 	branch = master
+[submodule "CVE-2018-0296"]
+	path = CVE-2018-0296
+	url = https://github.com/yassineaboukir/CVE-2018-0296
